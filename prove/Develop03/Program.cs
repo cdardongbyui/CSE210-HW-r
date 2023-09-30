@@ -29,11 +29,16 @@ class Program
             Console.WriteLine("Press enter to continue or type 'quit' to finish:");
             option = Console.ReadLine();
             //scripture.HideRandomWords(3);
-            if(scripture.isCompletelyHideen()==false){
+            
+            if(scripture.isCompletelyHideen()==false && scripture.countShow()>3){
                scripture.HideRandomWords(3); 
             }
+            else{
+                 scripture.HideRandomWords(scripture.countShow()); 
+                 option="quite";
+            }
             
-            //Console.Clear();
+            Console.Clear();
         }
 
       

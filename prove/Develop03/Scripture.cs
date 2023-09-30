@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 public class Scripture{
 
@@ -6,6 +7,7 @@ public class Scripture{
     public string _scripture; 
 
     private List<Word> _words = new List<Word>();
+
 
     
 
@@ -22,7 +24,7 @@ public class Scripture{
     }
 
     public Boolean isCompletelyHideen(){
-         int i =0;
+         int i =1;
          int large = _words.Count;
          foreach (Word a in _words){
             if(a._isHidden ==true){
@@ -38,12 +40,38 @@ public class Scripture{
          
 
     } 
+public int countShow(){
+         int i =0;
+         int large = _words.Count;
+         foreach (Word a in _words){
+            if(a._isHidden ==false){
+                i++;
+            }
+          } 
+
+         return  i;  
+    
+    } 
+
     public void HideRandomWords(int numberToHide) {
-          
-          while (numberToHide!=0){
-                Console.WriteLine($"Hola {numberToHide}");
-                numberToHide--;
-          }
+        int large = _words.Count;
+        int indexWord=0;
+        Random rnd = new Random();
+           while (numberToHide!=0){
+                indexWord = rnd.Next(0,large);
+                Word a = _words[indexWord];
+                //Console.WriteLine(a._text);
+                
+                if (a._isHidden == false){
+                _words[indexWord]._text="------";
+                _words[indexWord]._isHidden=true;  
+                 numberToHide--;  
+                } 
+                
+
+               
+                //numberToHide--;
+            }
           
           
           /*foreach (Word a in _words){
@@ -52,7 +80,12 @@ public class Scripture{
     } 
     
      public string GetDisplayText(){
-        Console.WriteLine($"{_reference} {_scripture}");
+        String variable ="";
+        foreach (Word item in _words)
+        {
+            variable = variable +" "+ item._text;
+        }
+        Console.WriteLine($"{_reference} {variable}");
        return _scripture;
     }
 
