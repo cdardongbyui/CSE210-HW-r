@@ -69,14 +69,9 @@ public int countShow(){
                 } 
                 
 
-               
-                //numberToHide--;
             }
           
-          
-          /*foreach (Word a in _words){
-            Console.WriteLine(a._text);
-          } */     
+       
     } 
     
      public string GetDisplayText(){
