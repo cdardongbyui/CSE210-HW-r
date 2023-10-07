@@ -1,5 +1,12 @@
 using System.Runtime.CompilerServices;
-
+using System;
+using System.Security.Cryptography.X509Certificates;
+using System.IO; 
+/*
+Exceeding Requirements
+In the method where the user's items are written, 
+I added a functionality to save to file with the date and time as the file name
+*/
 public class ListingActivity : Activity
 {
    
@@ -52,9 +59,14 @@ public void GetRandomPromp(){
 
 public void GetListFromUser(string promp){
     int counter = 0;
-
+   
      DateTime currentTime = DateTime.Now;
     DateTime futureTime = currentTime.AddSeconds(_duration);
+    string fileName = "Listing_"+currentTime.ToString("yyyyMMdd_hhmmss")+".txt";
+    using (StreamWriter outputFile = new StreamWriter(fileName)){
+        outputFile.WriteLine (promp);
+        outputFile.WriteLine ("Listing");
+    
    
         while (currentTime < futureTime)
         {
@@ -62,10 +74,16 @@ public void GetListFromUser(string promp){
             Console.WriteLine(">");
             string answare =Console.ReadLine();
             counter++;
+            outputFile.WriteLine ($"1 - {answare}");
+
         }
+
+    
         futureTime = currentTime;
         
         Console.WriteLine($"You Listed {counter} items!!!");
+        outputFile.WriteLine ($"You Listed {counter} items!!!");
+    }
 } 
 
 
