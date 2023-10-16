@@ -1,0 +1,5 @@
+710
+SimpleGoal:hola,hola 2100,True
+EternalGoal:Hola 2,Hola 3,200
+ChecklistGoal:está 3,esta 4,10,2,90,1
+ChecklistGoal:hola.txt,hola,100,30,30,0

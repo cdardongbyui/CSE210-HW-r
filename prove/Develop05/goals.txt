@@ -1,0 +1,3 @@
+250
+SimpleGoal:make good actions,make god actions50,True
+EternalGoal:go to the church,go to the church,100
