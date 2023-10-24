@@ -2,14 +2,14 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using System.IO; 
 
-public class Journal{
+public class Comment{
 
     public string _filename;
-    public List<Entry>_entry = new List<Entry>();
+    public List<Video>_entry = new List<Video>();
 
     public void Display(){
 
-        foreach(Entry entry in _entry){
+        foreach(Video entry in _entry){
             entry.Display();
         }
     }
@@ -17,8 +17,8 @@ public class Journal{
     public void SaveToFile(){
         
         using (StreamWriter outputFile = new StreamWriter(_filename)){
-            foreach(Entry entry in _entry){
-              outputFile.WriteLine (entry._date +","+entry._promp +","+entry._userResponse+","+entry._wordCount);  
+            foreach(Video entry in _entry){
+              outputFile.WriteLine (entry._videoTitle +","+entry._videoAuthor +","+entry._length);  
             }
         }
      
@@ -32,7 +32,7 @@ public class Journal{
      
             foreach (string line in lines)
         {
-            Entry entry1 = new Entry();
+            Video entry1 = new Video();
             string[] parts = line.Split(",");
 
             string date = parts[0];
@@ -41,10 +41,10 @@ public class Journal{
             string wordsCount = parts[3];
 
 
-            entry1._date =date;
-            entry1._promp =promp;
-            entry1._userResponse = userEntry;
-            entry1._wordCount = Int32.Parse(wordsCount) ;
+            entry1._videoTitle =date;
+            entry1._videoAuthor =promp;
+           
+            entry1._length = Int32.Parse(wordsCount) ;
             _entry.Add(entry1);
 
         }
